@@ -10,4 +10,104 @@ package proyecto2_so.EDD;
  */
 public class Queue {
     
+    private Nodo front;
+    private Nodo back;
+    private int size;
+
+    public Queue() {
+        this.front = null;
+        this.back = null;
+        this.size = 0 ;
+    }
+    
+    public boolean isEmpty(){
+        return getFront()==null;
+    }
+    
+    
+    public void queue(Character character, int id, int cycle){
+        Nodo newNodo = new Nodo(character, id, cycle);
+        if(isEmpty()){
+            setFront(newNodo);
+            setBack(newNodo);
+        }else{
+            getBack().setpNext(newNodo);
+            setBack(newNodo);
+            setSize(getSize()+1);
+        }
+        
+    }
+    public void queue(Nodo newNodo){
+        if(isEmpty()){
+            setFront(newNodo);
+            setBack(newNodo);
+        }else{
+            getBack().setpNext(newNodo);
+            setBack(newNodo);
+            setSize(getSize()+1);
+        }
+        
+    }
+    
+    public Nodo dequeue(){
+        Nodo ret = null;
+        if(!isEmpty()){
+            ret = getFront();
+            setFront(getFront().getpNext());
+            setSize(getSize()-1);
+        }
+        return ret;
+    }
+    public Character dequeueCharacter(){
+        Character ret = null;
+        if(!isEmpty()){
+            ret = getFront().getCharacter();
+            setFront(getFront().getpNext());
+            setSize(getSize()-1);
+        }
+        return ret;
+    }
+
+    /**
+     * @return the front
+     */
+    public Nodo getFront() {
+        return front;
+    }
+
+    /**
+     * @param front the front to set
+     */
+    public void setFront(Nodo front) {
+        this.front = front;
+    }
+
+    /**
+     * @return the back
+     */
+    public Nodo getBack() {
+        return back;
+    }
+
+    /**
+     * @param back the back to set
+     */
+    public void setBack(Nodo back) {
+        this.back = back;
+    }
+
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
+    
 }
