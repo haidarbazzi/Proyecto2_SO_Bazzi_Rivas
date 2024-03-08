@@ -24,6 +24,31 @@ public class Queue {
         return getFront()==null;
     }
     
+    //Desencolar los nodos que ya llevan 8 ciclos
+    public Queue dequeueFullCycle(){
+        Queue auxQ = new Queue();
+        int size1 = this.size;
+        for (int i =0; i<size1;i++){
+            Nodo pAux = this.dequeue();
+            if(pAux.getCycle() == 8){
+                pAux.setCycle(0);
+                auxQ.queue(pAux);
+            } else {
+            pAux.setCycle(pAux.getCycle()+1);
+            this.queue(pAux);
+            }
+        }
+        return auxQ;
+    }
+    
+    //Encola los nodos que deben cambiar de cola (completaron un ciclo)
+    public void queueFullCycleNodes(Queue cycleQueue){
+        
+        for (int i=0; i<cycleQueue.getSize();i++){
+            Nodo pAux =cycleQueue.dequeue();
+            this.queue(pAux);
+        }
+    }
     
     public void queue(Character character, int id, int cycle){
         Nodo newNodo = new Nodo(character, id, cycle);

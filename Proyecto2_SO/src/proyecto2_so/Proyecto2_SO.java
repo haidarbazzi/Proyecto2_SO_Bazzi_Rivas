@@ -4,6 +4,8 @@
  */
 package proyecto2_so;
 
+import proyecto2_so.Interfaces.MainWindow;
+
 /**
  *
  * @author andre
@@ -16,7 +18,8 @@ public class Proyecto2_SO {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        
+        MainWindow mw = new MainWindow();
+        mw.setVisible(true);
     }
     
     

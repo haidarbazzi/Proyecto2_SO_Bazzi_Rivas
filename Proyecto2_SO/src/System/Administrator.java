@@ -30,6 +30,8 @@ public class Administrator extends Thread{
             if (randomNum<0.80){
                 
                 
+                getBuffer().setNumCycle(0);
+                
             }
         
             //Actualizar las colas segun los nodos que completaron ciclo
@@ -105,6 +107,8 @@ public class Administrator extends Thread{
                     
                 }
             }
+            
+            getBuffer().setNumCycle(getBuffer().getNumCycle() + 1);
             
             //Actualizar la interfaz
             

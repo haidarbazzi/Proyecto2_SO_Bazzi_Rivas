@@ -17,7 +17,6 @@ public class Character {
     private int id;
     private CompanyEnum company;
     private TierEnum tier;
-    private int counter; //contador para evitar inanicion
 
     public Character(String name, int id, CompanyEnum company, TierEnum tier) {
         this.name = name;
@@ -82,20 +81,6 @@ public class Character {
         this.tier = tier;
     }
 
-    /**
-     * @return the counter
-     */
-    public int getCounter() {
-        return counter;
-    }
-
-    /**
-     * @param counter the counter to set
-     */
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-    
     
     
 }
