@@ -326,6 +326,11 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(54, 57, 59));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "1", "1.5", "2", "2.5", "3" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(54, 57, 59)));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
@@ -336,6 +341,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void startSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_startSimActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

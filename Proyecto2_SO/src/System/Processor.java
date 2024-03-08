@@ -2,23 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto2_so.Enum;
+package System;
 
 /**
  *
- * @author andre
+ * @author HP
  */
-public enum TierEnum {
+public class Processor extends Thread{
     
-    FIRST(0), 
-    SECOND(1), 
-    THIRD(2),
-    REINFORCEMENT(3);
     
-    private final int id;
     
-    private TierEnum(int id){
-        this.id = id;
+    @Override
+    public void run(){
+    
     }
-    
 }

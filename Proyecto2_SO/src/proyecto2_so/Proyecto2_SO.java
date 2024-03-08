@@ -17,13 +17,6 @@ public class Proyecto2_SO {
         
         // TODO code application logic here
         
-        int sum = 0;
-        String woed = "vord";
-        for (int i = 0; i<woed.length(); i++){
-            int char1 = woed.charAt(i);
-            sum += char1;
-        }
-        System.out.println(sum);
     }
     
     
