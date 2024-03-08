@@ -6,6 +6,7 @@ package proyecto2_so.Disk;
 
 import java.util.concurrent.Semaphore;
 import proyecto2_so.EDD.Queue;
+import proyecto2_so.Character.Character;
 
 /**
  *

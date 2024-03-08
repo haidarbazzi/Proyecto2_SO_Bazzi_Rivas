@@ -20,6 +20,8 @@ public class Proyecto2_SO {
         // TODO code application logic here
         MainWindow mw = new MainWindow();
         mw.setVisible(true);
+        Init init = new Init();
+        init.init();
     }
     
     

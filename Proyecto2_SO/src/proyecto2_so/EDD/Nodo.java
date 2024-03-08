@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto2_so.EDD;
+import proyecto2_so.Character.Character;
 
 /**
  *

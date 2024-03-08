@@ -8,23 +8,20 @@ package proyecto2_so.Enum;
  *
  * @author andre
  */
-public enum CompanyEnum {
+public enum TypeEnum {
     
-    NICKELODEON(0),
-    CARTOONNETWORK(1),;
+    MASTER(0),
+    SKILLED(1),
+    AVERAGE(2),
+    DEFICIENT(3),
+    WEAK(4);
     
-    private final int id;
+     private final int id;
     
-    
-    private CompanyEnum(int id){
+    private TypeEnum(int id){
         this.id = id;
     }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
+    
+    
+    
 }
