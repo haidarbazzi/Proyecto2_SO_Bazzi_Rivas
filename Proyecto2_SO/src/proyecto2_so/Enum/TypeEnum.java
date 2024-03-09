@@ -21,6 +21,13 @@ public enum TypeEnum {
     private TypeEnum(int id){
         this.id = id;
     }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
     
     
     

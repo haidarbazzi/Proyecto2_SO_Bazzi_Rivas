@@ -25,6 +25,7 @@ public class Init {
             buffer.getNickCharacters()[i]= new Character("personaje"+String.valueOf(i), i, CompanyEnum.NICKELODEON);
             buffer.getCartoonCharacters()[i]= new Character("personaje"+String.valueOf(i), i, CompanyEnum.CARTOONNETWORK);
             
+            
                   
         }
         
