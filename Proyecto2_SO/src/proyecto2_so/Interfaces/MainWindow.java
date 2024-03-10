@@ -28,6 +28,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         startSim = new javax.swing.JButton();
+        IDnick = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -56,18 +57,21 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         effortCartoon = new javax.swing.JList<>();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         winnersCartoon = new javax.swing.JLabel();
         winnersNick1 = new javax.swing.JLabel();
+        fighterCartoon = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        fighterCartoon = new javax.swing.JLabel();
         fighterNick = new javax.swing.JLabel();
         stateAI = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        IDcartoon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(140, 540));
@@ -87,6 +91,12 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jPanel1.add(startSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 150, 50));
+
+        IDnick.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        IDnick.setForeground(new java.awt.Color(54, 57, 59));
+        IDnick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IDnick.setText("ID:");
+        jPanel1.add(IDnick, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 120, -1));
 
         jSeparator1.setForeground(new java.awt.Color(54, 57, 59));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -266,6 +276,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, 150, 100));
 
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Grand_Master.png"))); // NOI18N
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 120, 100));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/aang.png"))); // NOI18N
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 120, 100));
+
         winnersCartoon.setBackground(new java.awt.Color(145, 178, 228));
         winnersCartoon.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 0, 48)); // NOI18N
         winnersCartoon.setForeground(new java.awt.Color(230, 225, 197));
@@ -282,44 +299,43 @@ public class MainWindow extends javax.swing.JFrame {
         winnersNick1.setOpaque(true);
         jPanel1.add(winnersNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, -1));
 
+        fighterCartoon.setFont(new java.awt.Font("Barlow Condensed", 1, 14)); // NOI18N
+        fighterCartoon.setForeground(new java.awt.Color(54, 57, 59));
+        fighterCartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fighterCartoon.setText("Nombre Cartoon");
+        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 330, 130, -1));
+
         jLabel16.setFont(new java.awt.Font("Barlow Condensed Black", 2, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(201, 124, 93));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("VS");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 220, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 220, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/aang.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/DeficientTempAvatar.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Regular_Show_Logo.svg.png"))); // NOI18N
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/mordecai.jpg"))); // NOI18N
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, -1, -1));
-
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Avatar_The_Last_Airbender_logo.svg.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        fighterCartoon.setFont(new java.awt.Font("Barlow Condensed", 1, 14)); // NOI18N
-        fighterCartoon.setForeground(new java.awt.Color(54, 57, 59));
-        fighterCartoon.setText("Nombre Cartoon");
-        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
-
         fighterNick.setFont(new java.awt.Font("Barlow Condensed", 1, 14)); // NOI18N
         fighterNick.setForeground(new java.awt.Color(54, 57, 59));
+        fighterNick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fighterNick.setText("Nombre Nick");
-        jPanel1.add(fighterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
+        jPanel1.add(fighterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 100, -1));
 
         stateAI.setFont(new java.awt.Font("Barlow Condensed Black", 0, 24)); // NOI18N
         stateAI.setForeground(new java.awt.Color(54, 57, 59));
         stateAI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stateAI.setText("Decidiendo");
-        jPanel1.add(stateAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 220, -1));
+        jPanel1.add(stateAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 220, -1));
 
-        jLabel2.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(54, 57, 59));
         jLabel2.setText("Velocidad de Simulacion");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
 
         jComboBox1.setBackground(new java.awt.Color(225, 229, 197));
         jComboBox1.setFont(new java.awt.Font("Barlow Condensed", 0, 12)); // NOI18N
@@ -332,6 +348,15 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/DeficientTempAvatar.png"))); // NOI18N
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, -1, -1));
+
+        IDcartoon.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        IDcartoon.setForeground(new java.awt.Color(54, 57, 59));
+        IDcartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IDcartoon.setText("ID:");
+        jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
@@ -382,6 +407,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDcartoon;
+    private javax.swing.JLabel IDnick;
     private javax.swing.JList<String> effortCartoon;
     private javax.swing.JList<String> effortNick;
     private javax.swing.JLabel fighterCartoon;
@@ -392,10 +419,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

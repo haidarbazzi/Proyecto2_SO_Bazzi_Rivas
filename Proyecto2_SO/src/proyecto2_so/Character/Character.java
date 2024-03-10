@@ -19,6 +19,8 @@ public class Character {
     private CompanyEnum company;
     private TierEnum tier;
     private TypeEnum type;
+    private String imgPath;
+    private String cardPath;
 
     public Character(String name, int id, CompanyEnum company) {
         this.name = name;
@@ -140,6 +142,34 @@ public class Character {
      */
     public void setType(TypeEnum type) {
         this.type = type;
+    }
+
+    /**
+     * @return the imgPath
+     */
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    /**
+     * @param imgPath the imgPath to set
+     */
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    /**
+     * @return the cardPath
+     */
+    public String getCardPath() {
+        return cardPath;
+    }
+
+    /**
+     * @param cardPath the cardPath to set
+     */
+    public void setCardPath(String cardPath) {
+        this.cardPath = cardPath;
     }
 
     
