@@ -4,11 +4,18 @@
  */
 package proyecto2_so.System;
 
+import javax.swing.DefaultListModel;
 import proyecto2_so.Disk.Buffer;
 import proyecto2_so.EDD.Nodo;
 import proyecto2_so.EDD.Queue;
 import proyecto2_so.Interfaces.MainWindow;
 import proyecto2_so.Character.Character;
+import static proyecto2_so.Enum.CompanyEnum.CARTOONNETWORK;
+import static proyecto2_so.Enum.CompanyEnum.NICKELODEON;
+import static proyecto2_so.Enum.TierEnum.FIRST;
+import static proyecto2_so.Enum.TierEnum.REINFORCEMENT;
+import static proyecto2_so.Enum.TierEnum.SECOND;
+import static proyecto2_so.Enum.TierEnum.THIRD;
 
 /**
  *
@@ -30,6 +37,13 @@ public class Administrator extends Thread {
     public void run() {
 
         while (true) {
+
+            try {
+                getBuffer().getS1().release();
+                getBuffer().getS2().acquire();
+
+            } catch (Exception e) {
+            }
 
             if (getBuffer().getNumCycle() == 2) {
                 //Ingresar un nuevo personaje después de dos ciclos
@@ -57,43 +71,42 @@ public class Administrator extends Thread {
             buffer.getCartoonTier2Queue().queueFullCycleNodes(fullCycleQueueCart3);
 
             //Seleccionar los personajes a batallar
-            Character nickFighter;
-            Character cartoonFighter;
+            Character nickFighter = null;
+            Character cartoonFighter = null;
 
             if (!buffer.getNickTier1Queue().isEmpty()) {
 
                 nickFighter = getBuffer().getNickTier1Queue().dequeueCharacter();
-                getBuffer().setNickFighter(nickFighter);
+               
 
             } else if (!buffer.getNickTier2Queue().isEmpty()) {
 
                 nickFighter = getBuffer().getNickTier2Queue().dequeueCharacter();
-                getBuffer().setNickFighter(nickFighter);
-
+               
             } else if (!buffer.getNickTier3Queue().isEmpty()) {
 
                 nickFighter = getBuffer().getNickTier3Queue().dequeueCharacter();
-                getBuffer().setNickFighter(nickFighter);
+                
 
             }
+            System.out.println(nickFighter.getName());
 
             if (!buffer.getCartoonTier1Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier1Queue().dequeueCharacter();
-                getBuffer().setCartoonFighter(cartoonFighter);
+               
 
             } else if (!buffer.getCartoonTier2Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier2Queue().dequeueCharacter();
-                getBuffer().setCartoonFighter(cartoonFighter);
+               
 
-            }
-
-            if (!buffer.getCartoonTier3Queue().isEmpty()) {
+            } else if (!buffer.getCartoonTier3Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier3Queue().dequeueCharacter();
-                getBuffer().setCartoonFighter(cartoonFighter);
+               
             }
+            System.out.println(cartoonFighter.getName());
 
             //Administracion de cola de refuerzo
             double randomNum2 = Math.random();
@@ -114,10 +127,36 @@ public class Administrator extends Thread {
                 }
             }
 
+            updateWindow();
+            getBuffer().setNickFighter(nickFighter);
+            getBuffer().setCartoonFighter(cartoonFighter);
             getBuffer().setNumCycle(getBuffer().getNumCycle() + 1);
-
-            //Actualizar la interfaz
+            
         }
+    }
+
+    public void updateWindow() {
+        updateQueues(getMainWindow().getEffortNick(), getBuffer().getNickEffortQueue());
+        updateQueues(getMainWindow().getEffortCartoon(), getBuffer().getCartoonEffortQueue());
+        updateQueues(getMainWindow().getTier1Nick(), getBuffer().getNickTier1Queue());
+        updateQueues(getMainWindow().getTier1Cartoon(), getBuffer().getCartoonTier1Queue());
+        updateQueues(getMainWindow().getTier2Nick(), getBuffer().getNickTier2Queue());
+        updateQueues(getMainWindow().getTier2Cartoon(), getBuffer().getCartoonTier2Queue());
+        updateQueues(getMainWindow().getTier3Nick(), getBuffer().getNickTier3Queue());
+        updateQueues(getMainWindow().getTier3Cartoon(), getBuffer().getCartoonTier3Queue());
+
+    }
+
+    public void updateQueues(javax.swing.JList<String> list, Queue queue) {
+        DefaultListModel model = new DefaultListModel();
+        list.setModel(model);
+        String[] elements = queue.toArray();
+        if (elements != null) {
+            for (String element : elements) {
+                model.addElement(element);
+            }
+        }
+
     }
 
     public void createNewCharacter() {
@@ -129,12 +168,57 @@ public class Administrator extends Thread {
             cartoonC = new Character(getBuffer().getCartoonCharacters()[random]);
 
             nickC.setId(getNextID());
+            movetoQueue(nickC);
             cartoonC.setId(getNextID() + 1);
+            movetoQueue(cartoonC);
             setNextID(getNextID() + 1);
         } catch (Exception e) {
             System.out.println(e);
         }
 
+    }
+    
+    public void movetoQueue(Character fighter){
+        switch(fighter.getCompany()){
+            case NICKELODEON:
+                switch(fighter.getTier()){
+                    case REINFORCEMENT:
+                        getBuffer().getNickEffortQueue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case THIRD:
+                        getBuffer().getNickTier3Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case SECOND:
+                        getBuffer().getNickTier2Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case FIRST:
+                        getBuffer().getNickTier1Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                        
+                      
+                }
+            break;
+            case CARTOONNETWORK:
+                switch(fighter.getTier()){
+                    case REINFORCEMENT:
+                        getBuffer().getCartoonEffortQueue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case THIRD:
+                        getBuffer().getCartoonTier3Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case SECOND:
+                        getBuffer().getCartoonTier2Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                    case FIRST:
+                        getBuffer().getCartoonTier1Queue().queue(fighter, fighter.getId(), 0);
+                        break;
+                        
+                      
+                }
+            break;
+        }
+    
+    
     }
 
     /**

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto2_so.EDD;
+
 import proyecto2_so.Character.Character;
 
 /**
@@ -10,7 +11,7 @@ import proyecto2_so.Character.Character;
  * @author andre
  */
 public class Queue {
-    
+
     private Nodo front;
     private Nodo back;
     private int size;
@@ -18,80 +19,109 @@ public class Queue {
     public Queue() {
         this.front = null;
         this.back = null;
-        this.size = 0 ;
+        this.size = 0;
     }
-    
-    public boolean isEmpty(){
-        return getFront()==null;
+
+    public boolean isEmpty() {
+        return getFront() == null;
     }
-    
+
     //Desencolar los nodos que ya llevan 8 ciclos
-    public Queue dequeueFullCycle(){
+    public Queue dequeueFullCycle() {
         Queue auxQ = new Queue();
-        int size1 = this.size;
-        for (int i =0; i<size1;i++){
-            Nodo pAux = this.dequeue();
-            if(pAux.getCycle() == 8){
+
+        for (int i = 0; i < getSize(); i++) {
+            Nodo pAux = dequeue();
+            if (pAux.getCycle() == 8) {
                 pAux.setCycle(0);
                 auxQ.queue(pAux);
             } else {
-            pAux.setCycle(pAux.getCycle()+1);
-            this.queue(pAux);
+                pAux.setCycle(pAux.getCycle() + 1);
+                queue(pAux);
+                
             }
         }
+        
         return auxQ;
     }
-    
+
     //Encola los nodos que deben cambiar de cola (completaron un ciclo)
-    public void queueFullCycleNodes(Queue cycleQueue){
-        
-        for (int i=0; i<cycleQueue.getSize();i++){
-            Nodo pAux =cycleQueue.dequeue();
-            this.queue(pAux);
+    public void queueFullCycleNodes(Queue cycleQueue) {
+       
+        for (int i = 0; i < cycleQueue.getSize(); i++) {
+            Nodo pAux = cycleQueue.dequeue();
+            queue(pAux);
         }
+       
     }
-    
-    public void queue(Character character, int id, int cycle){
+
+    public void queue(Character character, int id, int cycle) {
         Nodo newNodo = new Nodo(character, id, cycle);
-        if(isEmpty()){
+        if (isEmpty()) {
             setFront(newNodo);
             setBack(newNodo);
-        }else{
+
+        } else {
             getBack().setpNext(newNodo);
             setBack(newNodo);
-            setSize(getSize()+1);
+
         }
-        
+        setSize(getSize() + 1);
+       
     }
-    public void queue(Nodo newNodo){
-        if(isEmpty()){
+
+    public void queue(Nodo newNodo) {
+        if (isEmpty()) {
             setFront(newNodo);
             setBack(newNodo);
-        }else{
+
+        } else {
             getBack().setpNext(newNodo);
             setBack(newNodo);
-            setSize(getSize()+1);
+
         }
+        setSize(getSize() + 1);
         
     }
-    
-    public Nodo dequeue(){
+
+    public Nodo dequeue() {
         Nodo ret = null;
-        if(!isEmpty()){
+        if (!isEmpty()) {
             ret = getFront();
             setFront(getFront().getpNext());
-            setSize(getSize()-1);
+            setSize(getSize() - 1);
         }
         return ret;
     }
-    public Character dequeueCharacter(){
+
+    public Character dequeueCharacter() {
         Character ret = null;
-        if(!isEmpty()){
+        Nodo front = null;
+        if (!isEmpty()) {
             ret = getFront().getCharacter();
-            setFront(getFront().getpNext());
-            setSize(getSize()-1);
+            dequeue();
         }
         return ret;
+    }
+
+    public String[] toArray() {
+      try{
+        if (!isEmpty()) {
+            String[] array = new String[getSize()];
+            Nodo ch = null;
+            for (int i = 0; i < array.length; i++) {
+                ch = dequeue();
+                array[i] = ch.getId() + ": " + ch.getCharacter().getName();
+                queue(ch);
+            }
+            
+            return array;
+            
+        }
+        return null;
+      }catch(Exception e){
+          return null;
+      }
     }
 
     /**
@@ -135,5 +165,5 @@ public class Queue {
     public void setSize(int size) {
         this.size = size;
     }
-    
+
 }

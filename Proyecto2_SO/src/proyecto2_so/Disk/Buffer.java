@@ -36,8 +36,8 @@ public class Buffer {
     private Queue cartoonEffortQueue = new Queue();
     
     //semaforos de sincronizacion
-    private Semaphore s1 = new Semaphore(0);
-    private Semaphore s2 = new Semaphore(0);
+    private final Semaphore s1 = new Semaphore(0);
+    private final Semaphore s2 = new Semaphore(0);
     
     //contador de ciclos
     private int numCycle = 0;
@@ -48,6 +48,7 @@ public class Buffer {
     
     //simulacion
     private int simSpeed=1000;
+    private int nextSim = 4000;
 
     public Buffer() {
     }
@@ -227,13 +228,7 @@ public class Buffer {
         return s1;
     }
 
-    /**
-     * @param s1 the s1 to set
-     */
-    public void setS1(Semaphore s1) {
-        this.s1 = s1;
-    }
-
+   
     /**
      * @return the s2
      */
@@ -241,13 +236,7 @@ public class Buffer {
         return s2;
     }
 
-    /**
-     * @param s2 the s2 to set
-     */
-    public void setS2(Semaphore s2) {
-        this.s2 = s2;
-    }
-
+   
     /**
      * @return the numCycle
      */
@@ -302,6 +291,13 @@ public class Buffer {
      */
     public void setSimSpeed(int simSpeed) {
         this.simSpeed = simSpeed;
+    }
+
+    /**
+     * @return the nextSim
+     */
+    public int getNextSim() {
+        return nextSim;
     }
     
     

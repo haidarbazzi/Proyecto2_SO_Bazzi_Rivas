@@ -20,19 +20,19 @@ public class Character {
     private TierEnum tier;
     private TypeEnum type;
     private String imgPath;
-    private String cardPath;
 
-    public Character(String name, int id, CompanyEnum company) {
+    public Character(String name, int id, CompanyEnum company, String imgPath) {
         this.name = name;
         this.id = id;
         this.company = company;
+        this.imgPath= imgPath;
         //define su tipo 
         boolean[] type = new boolean[4];
         double[] base = {0.7,0.6,0.5,0.4};
         double prob;
         for (int i = 0; i < 4; i++) {
             prob = Math.random();
-            type[i] = (prob<=base[i])? true : false;
+            type[i] = (prob<=base[i]);
         }
         if(type[2]&&type[3]){
             this.type = TypeEnum.MASTER;
@@ -72,6 +72,7 @@ public class Character {
         this.name = clone.getName();
         this.tier = clone.getTier();
         this.type = clone.getType();
+        this.imgPath = clone.getImgPath();
     }
 
     /**
@@ -158,20 +159,5 @@ public class Character {
         this.imgPath = imgPath;
     }
 
-    /**
-     * @return the cardPath
-     */
-    public String getCardPath() {
-        return cardPath;
-    }
-
-    /**
-     * @param cardPath the cardPath to set
-     */
-    public void setCardPath(String cardPath) {
-        this.cardPath = cardPath;
-    }
-
-    
     
 }

@@ -18,10 +18,8 @@ public class Proyecto2_SO {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        MainWindow mw = new MainWindow();
-        mw.setVisible(true);
-        Init init = new Init();
-        init.init();
+       MainWindow main = new MainWindow();
+       main.setVisible(true);
     }
     
     

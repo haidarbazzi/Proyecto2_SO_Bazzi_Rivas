@@ -4,6 +4,8 @@
  */
 package proyecto2_so.Interfaces;
 
+import proyecto2_so.Init;
+
 /**
  *
  * @author andre
@@ -57,21 +59,21 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         effortCartoon = new javax.swing.JList<>();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         winnersCartoon = new javax.swing.JLabel();
-        winnersNick1 = new javax.swing.JLabel();
+        winnersNick = new javax.swing.JLabel();
         fighterCartoon = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         fighterNick = new javax.swing.JLabel();
         stateAI = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
         IDcartoon = new javax.swing.JLabel();
+        cartoonCharacterImage = new javax.swing.JLabel();
+        nickCharacterImage1 = new javax.swing.JLabel();
+        nickCharacterCard = new javax.swing.JLabel();
+        cartoonCharacterCard = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(140, 540));
@@ -96,7 +98,7 @@ public class MainWindow extends javax.swing.JFrame {
         IDnick.setForeground(new java.awt.Color(54, 57, 59));
         IDnick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IDnick.setText("ID:");
-        jPanel1.add(IDnick, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 120, -1));
+        jPanel1.add(IDnick, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 120, -1));
 
         jSeparator1.setForeground(new java.awt.Color(54, 57, 59));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -276,13 +278,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, 150, 100));
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Grand_Master.png"))); // NOI18N
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 120, 100));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/aang.png"))); // NOI18N
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 120, 100));
-
         winnersCartoon.setBackground(new java.awt.Color(145, 178, 228));
         winnersCartoon.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 0, 48)); // NOI18N
         winnersCartoon.setForeground(new java.awt.Color(230, 225, 197));
@@ -291,46 +286,43 @@ public class MainWindow extends javax.swing.JFrame {
         winnersCartoon.setOpaque(true);
         jPanel1.add(winnersCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 50, -1));
 
-        winnersNick1.setBackground(new java.awt.Color(145, 178, 228));
-        winnersNick1.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 0, 48)); // NOI18N
-        winnersNick1.setForeground(new java.awt.Color(230, 225, 197));
-        winnersNick1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        winnersNick1.setText("0");
-        winnersNick1.setOpaque(true);
-        jPanel1.add(winnersNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, -1));
+        winnersNick.setBackground(new java.awt.Color(145, 178, 228));
+        winnersNick.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 0, 48)); // NOI18N
+        winnersNick.setForeground(new java.awt.Color(230, 225, 197));
+        winnersNick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        winnersNick.setText("0");
+        winnersNick.setOpaque(true);
+        jPanel1.add(winnersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, -1));
 
         fighterCartoon.setFont(new java.awt.Font("Barlow Condensed", 1, 14)); // NOI18N
         fighterCartoon.setForeground(new java.awt.Color(54, 57, 59));
         fighterCartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fighterCartoon.setText("Nombre Cartoon");
-        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 330, 130, -1));
+        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 130, -1));
 
         jLabel16.setFont(new java.awt.Font("Barlow Condensed Black", 2, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(201, 124, 93));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("VS");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 220, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 40, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/DeficientTempAvatar.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Regular_Show_Logo.svg.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/CartoonImages/Regular_Show_Logo.svg.png"))); // NOI18N
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, -1, -1));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/Avatar_The_Last_Airbender_logo.svg.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Avatar_The_Last_Airbender_logo.svg.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         fighterNick.setFont(new java.awt.Font("Barlow Condensed", 1, 14)); // NOI18N
         fighterNick.setForeground(new java.awt.Color(54, 57, 59));
         fighterNick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fighterNick.setText("Nombre Nick");
-        jPanel1.add(fighterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 100, -1));
+        jPanel1.add(fighterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 100, -1));
 
         stateAI.setFont(new java.awt.Font("Barlow Condensed Black", 0, 24)); // NOI18N
         stateAI.setForeground(new java.awt.Color(54, 57, 59));
         stateAI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stateAI.setText("Decidiendo");
-        jPanel1.add(stateAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 220, -1));
+        jPanel1.add(stateAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 220, -1));
 
         jLabel2.setFont(new java.awt.Font("Barlow Condensed ExtraBold", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(54, 57, 59));
@@ -341,6 +333,7 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Barlow Condensed", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(54, 57, 59));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "1", "1.5", "2", "2.5", "3" }));
+        jComboBox1.setSelectedIndex(2);
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(54, 57, 59)));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,14 +342,24 @@ public class MainWindow extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/Images/DeficientTempAvatar.png"))); // NOI18N
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, -1, -1));
-
         IDcartoon.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         IDcartoon.setForeground(new java.awt.Color(54, 57, 59));
         IDcartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IDcartoon.setText("ID:");
-        jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 120, -1));
+        jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, -1));
+
+        cartoonCharacterImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
+        jPanel1.add(cartoonCharacterImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
+
+        nickCharacterImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
+        jPanel1.add(nickCharacterImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
+
+        nickCharacterCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/AverageCardAvatar.png"))); // NOI18N
+        jPanel1.add(nickCharacterCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 140, 220));
+
+        cartoonCharacterCard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartoonCharacterCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/CartoonImages/DeficientCardRegShow.png"))); // NOI18N
+        jPanel1.add(cartoonCharacterCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 150, 190));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
@@ -364,7 +367,10 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimActionPerformed
-        // TODO add your handling code here:
+        Init init = new Init(this);
+        init.init();
+        this.startSim.setEnabled(false);
+        
     }//GEN-LAST:event_startSimActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -405,26 +411,26 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
     }
+    
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDcartoon;
     private javax.swing.JLabel IDnick;
+    private javax.swing.JLabel cartoonCharacterCard;
+    private javax.swing.JLabel cartoonCharacterImage;
     private javax.swing.JList<String> effortCartoon;
     private javax.swing.JList<String> effortNick;
     private javax.swing.JLabel fighterCartoon;
     private javax.swing.JLabel fighterNick;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -443,6 +449,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel nickCharacterCard;
+    private javax.swing.JLabel nickCharacterImage1;
     private javax.swing.JButton startSim;
     private javax.swing.JLabel stateAI;
     private javax.swing.JList<String> tier1Cartoon;
@@ -452,6 +460,279 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JList<String> tier3Cartoon;
     private javax.swing.JList<String> tier3Nick;
     private javax.swing.JLabel winnersCartoon;
-    private javax.swing.JLabel winnersNick1;
+    private javax.swing.JLabel winnersNick;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the IDcartoon
+     */
+    public javax.swing.JLabel getIDcartoon() {
+        return IDcartoon;
+    }
+
+    /**
+     * @param IDcartoon the IDcartoon to set
+     */
+    public void setIDcartoon(javax.swing.JLabel IDcartoon) {
+        this.IDcartoon = IDcartoon;
+    }
+
+    /**
+     * @return the IDnick
+     */
+    public javax.swing.JLabel getIDnick() {
+        return IDnick;
+    }
+
+    /**
+     * @param IDnick the IDnick to set
+     */
+    public void setIDnick(javax.swing.JLabel IDnick) {
+        this.IDnick = IDnick;
+    }
+
+    /**
+     * @return the cartoonCharacterCard
+     */
+    public javax.swing.JLabel getCartoonCharacterCard() {
+        return cartoonCharacterCard;
+    }
+
+    /**
+     * @param cartoonCharacterCard the cartoonCharacterCard to set
+     */
+    public void setCartoonCharacterCard(javax.swing.JLabel cartoonCharacterCard) {
+        this.cartoonCharacterCard = cartoonCharacterCard;
+    }
+
+    /**
+     * @return the cartoonCharacterImage
+     */
+    public javax.swing.JLabel getCartoonCharacterImage() {
+        return cartoonCharacterImage;
+    }
+
+    /**
+     * @param cartoonCharacterImage the cartoonCharacterImage to set
+     */
+    public void setCartoonCharacterImage(javax.swing.JLabel cartoonCharacterImage) {
+        this.cartoonCharacterImage = cartoonCharacterImage;
+    }
+
+    /**
+     * @return the effortCartoon
+     */
+    public javax.swing.JList<String> getEffortCartoon() {
+        return effortCartoon;
+    }
+
+    /**
+     * @param effortCartoon the effortCartoon to set
+     */
+    public void setEffortCartoon(javax.swing.JList<String> effortCartoon) {
+        this.effortCartoon = effortCartoon;
+    }
+
+    /**
+     * @return the effortNick
+     */
+    public javax.swing.JList<String> getEffortNick() {
+        return effortNick;
+    }
+
+    /**
+     * @param effortNick the effortNick to set
+     */
+    public void setEffortNick(javax.swing.JList<String> effortNick) {
+        this.effortNick = effortNick;
+    }
+
+    /**
+     * @return the fighterCartoon
+     */
+    public javax.swing.JLabel getFighterCartoon() {
+        return fighterCartoon;
+    }
+
+    /**
+     * @param fighterCartoon the fighterCartoon to set
+     */
+    public void setFighterCartoon(javax.swing.JLabel fighterCartoon) {
+        this.fighterCartoon = fighterCartoon;
+    }
+
+    /**
+     * @return the fighterNick
+     */
+    public javax.swing.JLabel getFighterNick() {
+        return fighterNick;
+    }
+
+    /**
+     * @param fighterNick the fighterNick to set
+     */
+    public void setFighterNick(javax.swing.JLabel fighterNick) {
+        this.fighterNick = fighterNick;
+    }
+
+    /**
+     * @return the jComboBox1
+     */
+    public javax.swing.JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    /**
+     * @return the nickCharacterCard
+     */
+    public javax.swing.JLabel getNickCharacterCard() {
+        return nickCharacterCard;
+    }
+
+    /**
+     * @param nickCharacterCard the nickCharacterCard to set
+     */
+    public void setNickCharacterCard(javax.swing.JLabel nickCharacterCard) {
+        this.nickCharacterCard = nickCharacterCard;
+    }
+
+    /**
+     * @return the nickCharacterImage1
+     */
+    public javax.swing.JLabel getNickCharacterImage1() {
+        return nickCharacterImage1;
+    }
+
+    /**
+     * @param nickCharacterImage1 the nickCharacterImage1 to set
+     */
+    public void setNickCharacterImage1(javax.swing.JLabel nickCharacterImage1) {
+        this.nickCharacterImage1 = nickCharacterImage1;
+    }
+
+    /**
+     * @return the stateAI
+     */
+    public javax.swing.JLabel getStateAI() {
+        return stateAI;
+    }
+
+    /**
+     * @param stateAI the stateAI to set
+     */
+    public void setStateAI(javax.swing.JLabel stateAI) {
+        this.stateAI = stateAI;
+    }
+
+    /**
+     * @return the tier1Cartoon
+     */
+    public javax.swing.JList<String> getTier1Cartoon() {
+        return tier1Cartoon;
+    }
+
+    /**
+     * @param tier1Cartoon the tier1Cartoon to set
+     */
+    public void setTier1Cartoon(javax.swing.JList<String> tier1Cartoon) {
+        this.tier1Cartoon = tier1Cartoon;
+    }
+
+    /**
+     * @return the tier1Nick
+     */
+    public javax.swing.JList<String> getTier1Nick() {
+        return tier1Nick;
+    }
+
+    /**
+     * @param tier1Nick the tier1Nick to set
+     */
+    public void setTier1Nick(javax.swing.JList<String> tier1Nick) {
+        this.tier1Nick = tier1Nick;
+    }
+
+    /**
+     * @return the tier2Cartoon
+     */
+    public javax.swing.JList<String> getTier2Cartoon() {
+        return tier2Cartoon;
+    }
+
+    /**
+     * @param tier2Cartoon the tier2Cartoon to set
+     */
+    public void setTier2Cartoon(javax.swing.JList<String> tier2Cartoon) {
+        this.tier2Cartoon = tier2Cartoon;
+    }
+
+    /**
+     * @return the tier2Nick
+     */
+    public javax.swing.JList<String> getTier2Nick() {
+        return tier2Nick;
+    }
+
+    /**
+     * @param tier2Nick the tier2Nick to set
+     */
+    public void setTier2Nick(javax.swing.JList<String> tier2Nick) {
+        this.tier2Nick = tier2Nick;
+    }
+
+    /**
+     * @return the tier3Cartoon
+     */
+    public javax.swing.JList<String> getTier3Cartoon() {
+        return tier3Cartoon;
+    }
+
+    /**
+     * @param tier3Cartoon the tier3Cartoon to set
+     */
+    public void setTier3Cartoon(javax.swing.JList<String> tier3Cartoon) {
+        this.tier3Cartoon = tier3Cartoon;
+    }
+
+    /**
+     * @return the tier3Nick
+     */
+    public javax.swing.JList<String> getTier3Nick() {
+        return tier3Nick;
+    }
+
+    /**
+     * @param tier3Nick the tier3Nick to set
+     */
+    public void setTier3Nick(javax.swing.JList<String> tier3Nick) {
+        this.tier3Nick = tier3Nick;
+    }
+
+    /**
+     * @return the winnersCartoon
+     */
+    public javax.swing.JLabel getWinnersCartoon() {
+        return winnersCartoon;
+    }
+
+    /**
+     * @param winnersCartoon the winnersCartoon to set
+     */
+    public void setWinnersCartoon(javax.swing.JLabel winnersCartoon) {
+        this.winnersCartoon = winnersCartoon;
+    }
+
+    /**
+     * @return the winnersNick
+     */
+    public javax.swing.JLabel getWinnersNick() {
+        return winnersNick;
+    }
+
+    /**
+     * @param winnersNick the winnersNick to set
+     */
+    public void setWinnersNick(javax.swing.JLabel winnersNick) {
+        this.winnersNick = winnersNick;
+    }
 }
