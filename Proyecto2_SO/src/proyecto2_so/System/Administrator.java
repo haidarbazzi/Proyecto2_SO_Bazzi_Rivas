@@ -12,6 +12,7 @@ import proyecto2_so.Interfaces.MainWindow;
 import proyecto2_so.Character.Character;
 import static proyecto2_so.Enum.CompanyEnum.CARTOONNETWORK;
 import static proyecto2_so.Enum.CompanyEnum.NICKELODEON;
+import proyecto2_so.Enum.TierEnum;
 import static proyecto2_so.Enum.TierEnum.FIRST;
 import static proyecto2_so.Enum.TierEnum.REINFORCEMENT;
 import static proyecto2_so.Enum.TierEnum.SECOND;
@@ -56,72 +57,79 @@ public class Administrator extends Thread {
 
                 }
             }
+
+            if(getBuffer().getNickFighter()!=null && getBuffer().getCartoonFighter()!=null){
+                movetoQueue(getBuffer().getCartoonFighter());
+                movetoQueue(getBuffer().getNickFighter());
+               
+                
+            }
+             updateWindow();
+
             //Actualizar las colas segun los nodos que completaron ciclo
+            Queue fullCycleQueueNick2 = getBuffer().getNickTier2Queue().dequeueFullCycle();
+            getBuffer().getNickTier1Queue().queueFullCycleNodes(fullCycleQueueNick2, TierEnum.FIRST);
 
-            Queue fullCycleQueueNick2 = buffer.getNickTier2Queue().dequeueFullCycle();
-            buffer.getNickTier1Queue().queueFullCycleNodes(fullCycleQueueNick2);
+            Queue fullCycleQueueNick3 = getBuffer().getNickTier3Queue().dequeueFullCycle();
+            getBuffer().getNickTier2Queue().queueFullCycleNodes(fullCycleQueueNick3, TierEnum.SECOND);
 
-            Queue fullCycleQueueNick3 = buffer.getNickTier3Queue().dequeueFullCycle();
-            buffer.getNickTier2Queue().queueFullCycleNodes(fullCycleQueueNick3);
+            Queue fullCycleQueueCart2 = getBuffer().getCartoonTier2Queue().dequeueFullCycle();
+            getBuffer().getCartoonTier1Queue().queueFullCycleNodes(fullCycleQueueCart2, TierEnum.FIRST);
 
-            Queue fullCycleQueueCart2 = buffer.getCartoonTier2Queue().dequeueFullCycle();
-            buffer.getCartoonTier1Queue().queueFullCycleNodes(fullCycleQueueCart2);
-
-            Queue fullCycleQueueCart3 = buffer.getCartoonTier2Queue().dequeueFullCycle();
-            buffer.getCartoonTier2Queue().queueFullCycleNodes(fullCycleQueueCart3);
+            Queue fullCycleQueueCart3 = getBuffer().getCartoonTier2Queue().dequeueFullCycle();
+            getBuffer().getCartoonTier2Queue().queueFullCycleNodes(fullCycleQueueCart3, TierEnum.SECOND);
 
             //Seleccionar los personajes a batallar
             Character nickFighter = null;
             Character cartoonFighter = null;
-
+ 
             if (!buffer.getNickTier1Queue().isEmpty()) {
+               
 
                 nickFighter = getBuffer().getNickTier1Queue().dequeueCharacter();
-               
 
             } else if (!buffer.getNickTier2Queue().isEmpty()) {
 
                 nickFighter = getBuffer().getNickTier2Queue().dequeueCharacter();
-               
+
             } else if (!buffer.getNickTier3Queue().isEmpty()) {
 
                 nickFighter = getBuffer().getNickTier3Queue().dequeueCharacter();
-                
 
             }
-            System.out.println(nickFighter.getName());
+            
 
             if (!buffer.getCartoonTier1Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier1Queue().dequeueCharacter();
-               
 
             } else if (!buffer.getCartoonTier2Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier2Queue().dequeueCharacter();
-               
 
             } else if (!buffer.getCartoonTier3Queue().isEmpty()) {
 
                 cartoonFighter = getBuffer().getCartoonTier3Queue().dequeueCharacter();
-               
+
             }
-            System.out.println(cartoonFighter.getName());
+           
 
             //Administracion de cola de refuerzo
             double randomNum2 = Math.random();
-
+           
             if (randomNum2 <= 0.40) {
 
                 if (!buffer.getCartoonEffortQueue().isEmpty()) {
 
                     Nodo CartNewFighter = getBuffer().getCartoonEffortQueue().dequeue();
+                    CartNewFighter.getCharacter().setTier(FIRST);
                     getBuffer().getCartoonTier1Queue().queue(CartNewFighter);
 
                 }
                 if (!buffer.getNickEffortQueue().isEmpty()) {
 
                     Nodo NickNewFighter = getBuffer().getNickEffortQueue().dequeue();
+                    NickNewFighter.getCharacter().setTier(FIRST);
                     getBuffer().getNickTier1Queue().queue(NickNewFighter);
 
                 }
@@ -131,7 +139,7 @@ public class Administrator extends Thread {
             getBuffer().setNickFighter(nickFighter);
             getBuffer().setCartoonFighter(cartoonFighter);
             getBuffer().setNumCycle(getBuffer().getNumCycle() + 1);
-            
+
         }
     }
 
@@ -177,13 +185,16 @@ public class Administrator extends Thread {
         }
 
     }
-    
-    public void movetoQueue(Character fighter){
-        switch(fighter.getCompany()){
+
+    public void movetoQueue(Character fighter) {
+        switch (fighter.getCompany()) {
             case NICKELODEON:
-                switch(fighter.getTier()){
+                switch (fighter.getTier()) {
                     case REINFORCEMENT:
+                        
                         getBuffer().getNickEffortQueue().queue(fighter, fighter.getId(), 0);
+                        System.out.println("en teoria esta queued");
+                        getBuffer().getNickEffortQueue().print();
                         break;
                     case THIRD:
                         getBuffer().getNickTier3Queue().queue(fighter, fighter.getId(), 0);
@@ -194,12 +205,11 @@ public class Administrator extends Thread {
                     case FIRST:
                         getBuffer().getNickTier1Queue().queue(fighter, fighter.getId(), 0);
                         break;
-                        
-                      
+
                 }
-            break;
+                break;
             case CARTOONNETWORK:
-                switch(fighter.getTier()){
+                switch (fighter.getTier()) {
                     case REINFORCEMENT:
                         getBuffer().getCartoonEffortQueue().queue(fighter, fighter.getId(), 0);
                         break;
@@ -212,14 +222,14 @@ public class Administrator extends Thread {
                     case FIRST:
                         getBuffer().getCartoonTier1Queue().queue(fighter, fighter.getId(), 0);
                         break;
-                        
-                      
+
                 }
-            break;
+                break;
         }
-    
-    
+
     }
+
+   
 
     /**
      * @return the buffer

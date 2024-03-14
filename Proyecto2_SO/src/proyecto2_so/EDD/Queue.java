@@ -5,6 +5,7 @@
 package proyecto2_so.EDD;
 
 import proyecto2_so.Character.Character;
+import proyecto2_so.Enum.TierEnum;
 
 /**
  *
@@ -26,6 +27,12 @@ public class Queue {
         return getFront() == null;
     }
 
+    public void empty() {
+        this.front = null;
+        this.back = null;
+        this.size = 0;
+    }
+
     //Desencolar los nodos que ya llevan 8 ciclos
     public Queue dequeueFullCycle() {
         Queue auxQ = new Queue();
@@ -38,21 +45,32 @@ public class Queue {
             } else {
                 pAux.setCycle(pAux.getCycle() + 1);
                 queue(pAux);
-                
+
             }
         }
-        
+
         return auxQ;
     }
 
     //Encola los nodos que deben cambiar de cola (completaron un ciclo)
-    public void queueFullCycleNodes(Queue cycleQueue) {
-       
-        for (int i = 0; i < cycleQueue.getSize(); i++) {
-            Nodo pAux = cycleQueue.dequeue();
+    public void queueFullCycleNodes(Queue cycleQueue, TierEnum newTier) {
+        System.out.println(cycleQueue.getSize());
+        System.out.println(cycleQueue.isEmpty());
+        
+        if(!cycleQueue.isEmpty()){
+        Nodo pAux=cycleQueue.dequeue();
+            
+            
+            while(pAux !=null){
+            
+            pAux.getCharacter().setTier(newTier);
             queue(pAux);
+            pAux = cycleQueue.dequeue();}
+            
+            
+            
         }
-       
+
     }
 
     public void queue(Character character, int id, int cycle) {
@@ -67,10 +85,11 @@ public class Queue {
 
         }
         setSize(getSize() + 1);
-       
+
     }
 
     public void queue(Nodo newNodo) {
+        newNodo.setpNext(null);
         if (isEmpty()) {
             setFront(newNodo);
             setBack(newNodo);
@@ -81,22 +100,27 @@ public class Queue {
 
         }
         setSize(getSize() + 1);
-        
+
     }
 
     public Nodo dequeue() {
         Nodo ret = null;
+        if(getSize()==1){
+            empty();
+        }
         if (!isEmpty()) {
             ret = getFront();
+
             setFront(getFront().getpNext());
             setSize(getSize() - 1);
+
         }
         return ret;
     }
 
     public Character dequeueCharacter() {
         Character ret = null;
-        Nodo front = null;
+
         if (!isEmpty()) {
             ret = getFront().getCharacter();
             dequeue();
@@ -105,23 +129,23 @@ public class Queue {
     }
 
     public String[] toArray() {
-      try{
-        if (!isEmpty()) {
-            String[] array = new String[getSize()];
-            Nodo ch = null;
-            for (int i = 0; i < array.length; i++) {
-                ch = dequeue();
-                array[i] = ch.getId() + ": " + ch.getCharacter().getName();
-                queue(ch);
+        try {
+            if (!isEmpty()) {
+                String[] array = new String[getSize()];
+                Nodo ch = null;
+                for (int i = 0; i < array.length; i++) {
+                    ch = dequeue();
+                    array[i] = ch.getId() + ": " + ch.getCharacter().getName();
+                    queue(ch);
+                }
+
+                return array;
+
             }
-            
-            return array;
-            
+            return null;
+        } catch (Exception e) {
+            return null;
         }
-        return null;
-      }catch(Exception e){
-          return null;
-      }
     }
 
     /**
@@ -166,4 +190,16 @@ public class Queue {
         this.size = size;
     }
 
+   public void print(){
+        Nodo aux = this.getFront();
+        Nodo in=aux;
+        do{
+            System.out.println(front.getCharacter().getName());
+            dequeue();
+            queue(in);
+            in=this.getFront();
+        }while(aux!=in);
+        System.out.println("done");
+    }
+    
 }

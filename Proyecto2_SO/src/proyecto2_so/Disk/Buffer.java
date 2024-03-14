@@ -47,8 +47,8 @@ public class Buffer {
     private Character cartoonFighter;
     
     //simulacion
-    private int simSpeed=1000;
-    private int nextSim = 4000;
+    private int simSpeed=2000;
+    private int nextSim = 8000;
 
     public Buffer() {
     }
@@ -298,6 +298,10 @@ public class Buffer {
      */
     public int getNextSim() {
         return nextSim;
+    }
+    
+    public void setNextSim(int nextSim){
+        this.nextSim = nextSim;
     }
     
     

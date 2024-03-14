@@ -47,7 +47,7 @@ public class Processor extends Thread {
                 getMainWindow().getCartoonCharacterImage().setIcon(null);
 
                 getMainWindow().getStateAI().setText("Seleccionando");
-                sleep(2000);
+                sleep(4000);
 
                 Character nickFighter = getBuffer().getNickFighter();
                 Character cartoonFighter = getBuffer().getCartoonFighter();
@@ -90,14 +90,16 @@ public class Processor extends Thread {
                             getMainWindow().getWinnersCartoon().setText(String.valueOf(cartoonWins));
                             System.out.println("cartoon wins");
                         }
+                        getBuffer().setNickFighter(null);
+                        getBuffer().setCartoonFighter(null);
+                         
                     } else if (prob <= 0.67) {
                         getMainWindow().getStateAI().setText("Empate");
                         System.out.println("fix");
                         nickFighter.setTier(TierEnum.FIRST);
                         cartoonFighter.setTier(TierEnum.FIRST);
 
-                        movetoQueue(nickFighter);
-                        movetoQueue(cartoonFighter);
+                       
 
                     } else {
                         getMainWindow().getStateAI().setText("No es posible");
@@ -107,8 +109,7 @@ public class Processor extends Thread {
                         nickFighter.setTier(TierEnum.REINFORCEMENT);
                         cartoonFighter.setTier(TierEnum.REINFORCEMENT);
 
-                        movetoQueue(nickFighter);
-                        movetoQueue(cartoonFighter);
+                      
 
                     }
 
@@ -154,45 +155,7 @@ public class Processor extends Thread {
         }
     }
 
-    public void movetoQueue(Character fighter) {
-        switch (fighter.getCompany()) {
-            case NICKELODEON:
-                switch (fighter.getTier()) {
-                    case REINFORCEMENT:
-                        getBuffer().getNickEffortQueue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case THIRD:
-                        getBuffer().getNickTier3Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case SECOND:
-                        getBuffer().getNickTier2Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case FIRST:
-                        getBuffer().getNickTier1Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-
-                }
-                break;
-            case CARTOONNETWORK:
-                switch (fighter.getTier()) {
-                    case REINFORCEMENT:
-                        getBuffer().getCartoonEffortQueue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case THIRD:
-                        getBuffer().getCartoonTier3Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case SECOND:
-                        getBuffer().getCartoonTier2Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-                    case FIRST:
-                        getBuffer().getCartoonTier1Queue().queue(fighter, fighter.getId(), 0);
-                        break;
-
-                }
-                break;
-        }
-
-    }
+    
 
     public String getCardType(TypeEnum type, CompanyEnum comp) {
         switch (comp) {

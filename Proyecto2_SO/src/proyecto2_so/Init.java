@@ -16,24 +16,24 @@ import proyecto2_so.System.Processor;
  */
 public class Init {
     MainWindow main;
+    Buffer buffer;
     
-    public Init(MainWindow main){
+    public Init(MainWindow main, Buffer buffer){
         this.main = main;
+        this.buffer = buffer;
     }
     
     public void init(){
         
-        Buffer buffer = new Buffer();
         createCharacters(buffer);
         Administrator admin = new Administrator(buffer, main, 39);
         Processor proc = new Processor(buffer, main);
         
         for (int i = 0; i < 19; i++) {
-            proc.movetoQueue(buffer.getNickCharacters()[i]);
-            proc.movetoQueue(buffer.getCartoonCharacters()[i]);
+            admin.movetoQueue(buffer.getNickCharacters()[i]);
+            admin.movetoQueue(buffer.getCartoonCharacters()[i]);
         }
-        System.out.println(admin.getBuffer());
-        System.out.println(proc.getBuffer());
+       
         
         admin.updateWindow();
         proc.start();
@@ -89,7 +89,7 @@ public class Init {
        buffer.getCartoonCharacters()[13] = new Character("Pops",33, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Pops.png");
        buffer.getCartoonCharacters()[14] = new Character("Sensai",34, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Sensai.png");
        buffer.getCartoonCharacters()[15] = new Character("Skips",35, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Skips.png");
-       buffer.getCartoonCharacters()[16] = new Character("Staria",36, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Staria.png");
+       buffer.getCartoonCharacters()[16] = new Character("Starla",36, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Starla.png");
        buffer.getCartoonCharacters()[17] = new Character("Thomas 2",37, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Thomas2.png");
        buffer.getCartoonCharacters()[18] = new Character("Rigby",38, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Rigby.png");
        buffer.getCartoonCharacters()[19] = new Character("Roxy",39, CompanyEnum.CARTOONNETWORK, "src\\proyecto2_so\\CartoonImages\\Roxy.png");
