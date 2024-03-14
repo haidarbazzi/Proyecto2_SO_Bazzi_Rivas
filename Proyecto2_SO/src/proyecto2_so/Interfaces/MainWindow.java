@@ -298,7 +298,7 @@ public class MainWindow extends javax.swing.JFrame {
         fighterCartoon.setForeground(new java.awt.Color(54, 57, 59));
         fighterCartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fighterCartoon.setText("Nombre Cartoon");
-        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 130, -1));
+        jPanel1.add(fighterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 359, 130, 30));
 
         jLabel16.setFont(new java.awt.Font("Barlow Condensed Black", 2, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(201, 124, 93));
@@ -348,11 +348,13 @@ public class MainWindow extends javax.swing.JFrame {
         IDcartoon.setText("ID:");
         jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, -1));
 
+        cartoonCharacterImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartoonCharacterImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
-        jPanel1.add(cartoonCharacterImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
+        jPanel1.add(cartoonCharacterImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 110, -1));
 
+        nickCharacterImage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nickCharacterImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
-        jPanel1.add(nickCharacterImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
+        jPanel1.add(nickCharacterImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 120, -1));
 
         nickCharacterCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/AverageCardAvatar.png"))); // NOI18N
         jPanel1.add(nickCharacterCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 140, 220));
