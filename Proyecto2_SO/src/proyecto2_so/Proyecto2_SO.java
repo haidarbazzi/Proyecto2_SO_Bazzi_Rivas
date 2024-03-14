@@ -4,6 +4,7 @@
  */
 package proyecto2_so;
 
+import proyecto2_so.Disk.Buffer;
 import proyecto2_so.Interfaces.MainWindow;
 
 /**
@@ -18,7 +19,8 @@ public class Proyecto2_SO {
     public static void main(String[] args) {
         
         // TODO code application logic here
-       MainWindow main = new MainWindow();
+        Buffer buffer = new Buffer();
+       MainWindow main = new MainWindow(buffer);
        main.setVisible(true);
     }
     

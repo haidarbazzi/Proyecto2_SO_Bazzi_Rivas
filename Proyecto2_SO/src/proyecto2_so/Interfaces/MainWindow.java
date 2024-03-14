@@ -4,6 +4,7 @@
  */
 package proyecto2_so.Interfaces;
 
+import proyecto2_so.Disk.Buffer;
 import proyecto2_so.Init;
 
 /**
@@ -11,12 +12,16 @@ import proyecto2_so.Init;
  * @author andre
  */
 public class MainWindow extends javax.swing.JFrame {
+    
+    Buffer buffer;
 
     /**
      * Creates new form MainWindow
      */
-    public MainWindow() {
+    public MainWindow(Buffer buffer) {
         initComponents();
+        this.buffer=buffer;
+       
     }
 
     /**
@@ -30,7 +35,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         startSim = new javax.swing.JButton();
-        IDnick = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -68,8 +72,7 @@ public class MainWindow extends javax.swing.JFrame {
         fighterNick = new javax.swing.JLabel();
         stateAI = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        IDcartoon = new javax.swing.JLabel();
+        simSpeed = new javax.swing.JComboBox<>();
         cartoonCharacterImage = new javax.swing.JLabel();
         nickCharacterImage1 = new javax.swing.JLabel();
         nickCharacterCard = new javax.swing.JLabel();
@@ -93,12 +96,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jPanel1.add(startSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 150, 50));
-
-        IDnick.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        IDnick.setForeground(new java.awt.Color(54, 57, 59));
-        IDnick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IDnick.setText("ID:");
-        jPanel1.add(IDnick, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 120, -1));
 
         jSeparator1.setForeground(new java.awt.Color(54, 57, 59));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -329,24 +326,18 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2.setText("Velocidad de Simulacion");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(225, 229, 197));
-        jComboBox1.setFont(new java.awt.Font("Barlow Condensed", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(54, 57, 59));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "1", "1.5", "2", "2.5", "3" }));
-        jComboBox1.setSelectedIndex(2);
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(54, 57, 59)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        simSpeed.setBackground(new java.awt.Color(225, 229, 197));
+        simSpeed.setFont(new java.awt.Font("Barlow Condensed", 0, 12)); // NOI18N
+        simSpeed.setForeground(new java.awt.Color(54, 57, 59));
+        simSpeed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "1", "1.5", "2", "2.5", "3" }));
+        simSpeed.setSelectedIndex(2);
+        simSpeed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(54, 57, 59)));
+        simSpeed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                simSpeedActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
-
-        IDcartoon.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        IDcartoon.setForeground(new java.awt.Color(54, 57, 59));
-        IDcartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IDcartoon.setText("ID:");
-        jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, -1));
+        jPanel1.add(simSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
 
         cartoonCharacterImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartoonCharacterImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
@@ -369,63 +360,30 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSimActionPerformed
-        Init init = new Init(this);
+        Init init = new Init(this, this.buffer);
         init.init();
         this.startSim.setEnabled(false);
         
     }//GEN-LAST:event_startSimActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void simSpeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSpeedActionPerformed
+        int newSimSpeed = Integer.parseInt(this.simSpeed.getSelectedItem().toString());
+       
+        this.buffer.setSimSpeed(1000/newSimSpeed);
+        this.buffer.setNextSim(4000/newSimSpeed);
+        this.buffer.setSimLoad(2000/newSimSpeed);
+        
+    }//GEN-LAST:event_simSpeedActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
-        });
-    }
     
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDcartoon;
-    private javax.swing.JLabel IDnick;
     private javax.swing.JLabel cartoonCharacterCard;
     private javax.swing.JLabel cartoonCharacterImage;
     private javax.swing.JList<String> effortCartoon;
     private javax.swing.JList<String> effortNick;
     private javax.swing.JLabel fighterCartoon;
     private javax.swing.JLabel fighterNick;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -453,6 +411,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nickCharacterCard;
     private javax.swing.JLabel nickCharacterImage1;
+    private javax.swing.JComboBox<String> simSpeed;
     private javax.swing.JButton startSim;
     private javax.swing.JLabel stateAI;
     private javax.swing.JList<String> tier1Cartoon;
@@ -468,30 +427,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * @return the IDcartoon
      */
-    public javax.swing.JLabel getIDcartoon() {
-        return IDcartoon;
-    }
-
-    /**
-     * @param IDcartoon the IDcartoon to set
-     */
-    public void setIDcartoon(javax.swing.JLabel IDcartoon) {
-        this.IDcartoon = IDcartoon;
-    }
-
-    /**
-     * @return the IDnick
-     */
-    public javax.swing.JLabel getIDnick() {
-        return IDnick;
-    }
-
-    /**
-     * @param IDnick the IDnick to set
-     */
-    public void setIDnick(javax.swing.JLabel IDnick) {
-        this.IDnick = IDnick;
-    }
+   
 
     /**
      * @return the cartoonCharacterCard
@@ -581,7 +517,7 @@ public class MainWindow extends javax.swing.JFrame {
      * @return the jComboBox1
      */
     public javax.swing.JComboBox<String> getjComboBox1() {
-        return jComboBox1;
+        return simSpeed;
     }
 
     /**
