@@ -46,8 +46,9 @@ public class Processor extends Thread {
                 getMainWindow().getNickCharacterImage1().setIcon(null);
                 getMainWindow().getCartoonCharacterImage().setIcon(null);
 
-                getMainWindow().getStateAI().setText("Seleccionando");
-                sleep(4000);
+                
+                sleep(getBuffer().getSimLoad());
+                System.out.println(getBuffer().getSimLoad());
 
                 Character nickFighter = getBuffer().getNickFighter();
                 Character cartoonFighter = getBuffer().getCartoonFighter();

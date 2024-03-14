@@ -47,8 +47,9 @@ public class Buffer {
     private Character cartoonFighter;
     
     //simulacion
-    private int simSpeed=2000;
-    private int nextSim = 8000;
+    private int simSpeed=1000;
+    private int nextSim = 4000;
+    private int simLoad = 2000;
 
     public Buffer() {
     }
@@ -302,6 +303,20 @@ public class Buffer {
     
     public void setNextSim(int nextSim){
         this.nextSim = nextSim;
+    }
+
+    /**
+     * @return the simLoad
+     */
+    public int getSimLoad() {
+        return simLoad;
+    }
+
+    /**
+     * @param simLoad the simLoad to set
+     */
+    public void setSimLoad(int simLoad) {
+        this.simLoad = simLoad;
     }
     
     

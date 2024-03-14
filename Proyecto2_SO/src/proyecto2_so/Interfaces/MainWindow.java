@@ -35,7 +35,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         startSim = new javax.swing.JButton();
-        IDnick = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -74,7 +73,6 @@ public class MainWindow extends javax.swing.JFrame {
         stateAI = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         simSpeed = new javax.swing.JComboBox<>();
-        IDcartoon = new javax.swing.JLabel();
         cartoonCharacterImage = new javax.swing.JLabel();
         nickCharacterImage1 = new javax.swing.JLabel();
         nickCharacterCard = new javax.swing.JLabel();
@@ -98,12 +96,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         jPanel1.add(startSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 150, 50));
-
-        IDnick.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        IDnick.setForeground(new java.awt.Color(54, 57, 59));
-        IDnick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IDnick.setText("ID:");
-        jPanel1.add(IDnick, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 120, -1));
 
         jSeparator1.setForeground(new java.awt.Color(54, 57, 59));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -347,12 +339,6 @@ public class MainWindow extends javax.swing.JFrame {
         });
         jPanel1.add(simSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 110, -1));
 
-        IDcartoon.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        IDcartoon.setForeground(new java.awt.Color(54, 57, 59));
-        IDcartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IDcartoon.setText("ID:");
-        jPanel1.add(IDcartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 120, -1));
-
         cartoonCharacterImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2_so/NickImages/Appa.png"))); // NOI18N
         jPanel1.add(cartoonCharacterImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
 
@@ -380,16 +366,16 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void simSpeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSpeedActionPerformed
         int newSimSpeed = Integer.parseInt(this.simSpeed.getSelectedItem().toString());
-        this.buffer.setSimSpeed(10000/newSimSpeed);
-        this.buffer.setNextSim(40000/newSimSpeed);
+       
+        this.buffer.setSimSpeed(1000/newSimSpeed);
+        this.buffer.setNextSim(4000/newSimSpeed);
+        this.buffer.setSimLoad(2000/newSimSpeed);
         
     }//GEN-LAST:event_simSpeedActionPerformed
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDcartoon;
-    private javax.swing.JLabel IDnick;
     private javax.swing.JLabel cartoonCharacterCard;
     private javax.swing.JLabel cartoonCharacterImage;
     private javax.swing.JList<String> effortCartoon;
@@ -439,30 +425,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * @return the IDcartoon
      */
-    public javax.swing.JLabel getIDcartoon() {
-        return IDcartoon;
-    }
-
-    /**
-     * @param IDcartoon the IDcartoon to set
-     */
-    public void setIDcartoon(javax.swing.JLabel IDcartoon) {
-        this.IDcartoon = IDcartoon;
-    }
-
-    /**
-     * @return the IDnick
-     */
-    public javax.swing.JLabel getIDnick() {
-        return IDnick;
-    }
-
-    /**
-     * @param IDnick the IDnick to set
-     */
-    public void setIDnick(javax.swing.JLabel IDnick) {
-        this.IDnick = IDnick;
-    }
+   
 
     /**
      * @return the cartoonCharacterCard
