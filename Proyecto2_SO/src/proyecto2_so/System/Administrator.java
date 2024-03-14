@@ -60,8 +60,14 @@ public class Administrator extends Thread {
             }
 
             if(getBuffer().getNickFighter()!=null && getBuffer().getCartoonFighter()!=null){
-                movetoQueue(getBuffer().getCartoonFighter());
-                movetoQueue(getBuffer().getNickFighter());
+               movetoQueue(getBuffer().getCartoonFighter());
+               movetoQueue(getBuffer().getNickFighter());
+               System.out.println(getBuffer().getCartoonFighter().getName() + " ACA ESTA");
+               
+               System.out.println("NICK 1");
+               if(!getBuffer().getNickTier1Queue().isEmpty()){
+                   getBuffer().getNickTier1Queue().print();
+               }
             }
              updateWindow();
 
@@ -138,13 +144,12 @@ public class Administrator extends Thread {
             getBuffer().setNickFighter(nickFighter);
             getBuffer().setCartoonFighter(cartoonFighter);
             getBuffer().setNumCycle(getBuffer().getNumCycle() + 1);
-
+            
         }
     }
 
     public void updateWindow() {
         updateQueues(getMainWindow().getEffortNick(), getBuffer().getNickEffortQueue());
-
         updateQueues(getMainWindow().getEffortCartoon(), getBuffer().getCartoonEffortQueue());
         updateQueues(getMainWindow().getTier1Nick(), getBuffer().getNickTier1Queue());
         updateQueues(getMainWindow().getTier1Cartoon(), getBuffer().getCartoonTier1Queue());

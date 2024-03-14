@@ -47,9 +47,9 @@ public class Buffer {
     private Character cartoonFighter;
     
     //simulacion
-    private int simSpeed=1000;
-    private int nextSim = 4000;
-    private int simLoad = 2000;
+    private double simSpeed=1000;
+    private double nextSim = 4000;
+    private double simLoad = 2000;
 
     public Buffer() {
     }
@@ -283,39 +283,39 @@ public class Buffer {
     /**
      * @return the simSpeed
      */
-    public int getSimSpeed() {
+    public double getSimSpeed() {
         return simSpeed;
     }
 
     /**
      * @param simSpeed the simSpeed to set
      */
-    public void setSimSpeed(int simSpeed) {
+    public void setSimSpeed(double simSpeed) {
         this.simSpeed = simSpeed;
     }
 
     /**
      * @return the nextSim
      */
-    public int getNextSim() {
+    public double getNextSim() {
         return nextSim;
     }
     
-    public void setNextSim(int nextSim){
+    public void setNextSim(double nextSim){
         this.nextSim = nextSim;
     }
 
     /**
      * @return the simLoad
      */
-    public int getSimLoad() {
+    public double getSimLoad() {
         return simLoad;
     }
 
     /**
      * @param simLoad the simLoad to set
      */
-    public void setSimLoad(int simLoad) {
+    public void setSimLoad(double simLoad) {
         this.simLoad = simLoad;
     }
     

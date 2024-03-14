@@ -47,7 +47,7 @@ public class Processor extends Thread {
                 getMainWindow().getCartoonCharacterImage().setIcon(null);
 
                 
-                sleep(getBuffer().getSimLoad());
+                sleep((long)getBuffer().getSimLoad());
                 System.out.println(getBuffer().getSimLoad());
 
                 Character nickFighter = getBuffer().getNickFighter();
@@ -70,7 +70,7 @@ public class Processor extends Thread {
                     getMainWindow().getCartoonCharacterImage().setIcon(icon);
 
                     getMainWindow().getStateAI().setText("Decidiendo");
-                    sleep(getBuffer().getSimSpeed());
+                    sleep((long)getBuffer().getSimSpeed());
 
                     double prob = Math.random();
 
@@ -84,39 +84,40 @@ public class Processor extends Thread {
                             int nickWins = Integer.parseInt(getMainWindow().getWinnersNick().getText());
                             nickWins++;
                             getMainWindow().getWinnersNick().setText(String.valueOf(nickWins));
-                            System.out.println("nick wins");
+                            ;
                         } else {
                             getBuffer().getCartoonWinners().queue(cartoonFighter, nickFighter.getId(), 0);
                             getMainWindow().getStateAI().setText("Cartoon Gana");
                             int cartoonWins = Integer.parseInt(getMainWindow().getWinnersCartoon().getText());
                             cartoonWins++;
                             getMainWindow().getWinnersCartoon().setText(String.valueOf(cartoonWins));
-                            System.out.println("cartoon wins");
+                            
                         }
                         getBuffer().setNickFighter(null);
                         getBuffer().setCartoonFighter(null);
                          
                     } else if (prob <= 0.67) {
                         getMainWindow().getStateAI().setText("Empate");
-                        System.out.println("fix");
+                        
                         nickFighter.setTier(TierEnum.FIRST);
                         cartoonFighter.setTier(TierEnum.FIRST);
-
+                       
                        
 
                     } else {
                         getMainWindow().getStateAI().setText("No es posible");
-                        System.out.println("not possible");
+                        
                         
                         
                         nickFighter.setTier(TierEnum.REINFORCEMENT);
                         cartoonFighter.setTier(TierEnum.REINFORCEMENT);
+                        
 
                       
 
                     }
 
-                    sleep(getBuffer().getNextSim());
+                    sleep((long)getBuffer().getNextSim());
 
                 }
 

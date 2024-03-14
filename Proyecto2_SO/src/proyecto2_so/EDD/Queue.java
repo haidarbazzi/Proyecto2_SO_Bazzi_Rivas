@@ -33,16 +33,6 @@ public class Queue {
         this.size = 0;
     }
     
-    public String queueToString(){
-        Nodo pAux;
-        String show = "";
-        for (int i = 0;i<getSize();i++){
-            pAux = dequeue();
-            show += pAux.getCharacter().getName() + " ";
-            this.queue(pAux);
-        }
-        return show;
-    }
     //Desencolar los nodos que ya llevan 8 ciclos
     public Queue dequeueFullCycle() {
         Queue auxQ = new Queue();

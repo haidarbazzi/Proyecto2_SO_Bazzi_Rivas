@@ -367,7 +367,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_startSimActionPerformed
 
     private void simSpeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSpeedActionPerformed
-        int newSimSpeed = Integer.parseInt(this.simSpeed.getSelectedItem().toString());
+        double newSimSpeed = Double.parseDouble(this.simSpeed.getSelectedItem().toString());
        
         this.buffer.setSimSpeed(1000/newSimSpeed);
         this.buffer.setNextSim(4000/newSimSpeed);
