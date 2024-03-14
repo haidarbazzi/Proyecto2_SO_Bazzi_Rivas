@@ -53,16 +53,15 @@ public class Administrator extends Thread {
                 if (randomNum <= 0.80) {
 
                     createNewCharacter();
-                    getBuffer().setNumCycle(0);
 
                 }
+                
+                getBuffer().setNumCycle(0);
             }
 
             if(getBuffer().getNickFighter()!=null && getBuffer().getCartoonFighter()!=null){
                 movetoQueue(getBuffer().getCartoonFighter());
                 movetoQueue(getBuffer().getNickFighter());
-               
-                
             }
              updateWindow();
 
@@ -145,6 +144,7 @@ public class Administrator extends Thread {
 
     public void updateWindow() {
         updateQueues(getMainWindow().getEffortNick(), getBuffer().getNickEffortQueue());
+
         updateQueues(getMainWindow().getEffortCartoon(), getBuffer().getCartoonEffortQueue());
         updateQueues(getMainWindow().getTier1Nick(), getBuffer().getNickTier1Queue());
         updateQueues(getMainWindow().getTier1Cartoon(), getBuffer().getCartoonTier1Queue());
@@ -168,9 +168,10 @@ public class Administrator extends Thread {
     }
 
     public void createNewCharacter() {
-        int random = (int) Math.round(Math.random() * 10);
+        int random = (int) Math.round(Math.random() * 19);
         Character nickC;
         Character cartoonC;
+        System.out.println("DENTRO DE CREATE NEW CHARACTER");
         try {
             nickC = new Character(getBuffer().getNickCharacters()[random]);
             cartoonC = new Character(getBuffer().getCartoonCharacters()[random]);
@@ -179,7 +180,7 @@ public class Administrator extends Thread {
             movetoQueue(nickC);
             cartoonC.setId(getNextID() + 1);
             movetoQueue(cartoonC);
-            setNextID(getNextID() + 1);
+            setNextID(getNextID() + 2);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -191,10 +192,7 @@ public class Administrator extends Thread {
             case NICKELODEON:
                 switch (fighter.getTier()) {
                     case REINFORCEMENT:
-                        
                         getBuffer().getNickEffortQueue().queue(fighter, fighter.getId(), 0);
-                        System.out.println("en teoria esta queued");
-                        getBuffer().getNickEffortQueue().print();
                         break;
                     case THIRD:
                         getBuffer().getNickTier3Queue().queue(fighter, fighter.getId(), 0);
@@ -211,7 +209,7 @@ public class Administrator extends Thread {
             case CARTOONNETWORK:
                 switch (fighter.getTier()) {
                     case REINFORCEMENT:
-                        getBuffer().getCartoonEffortQueue().queue(fighter, fighter.getId(), 0);
+                        getBuffer().getCartoonEffortQueue().queue(fighter, fighter.getId(), 0);                      
                         break;
                     case THIRD:
                         getBuffer().getCartoonTier3Queue().queue(fighter, fighter.getId(), 0);

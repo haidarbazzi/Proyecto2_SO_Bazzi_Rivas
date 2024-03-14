@@ -53,6 +53,7 @@ public class Processor extends Thread {
                 Character nickFighter = getBuffer().getNickFighter();
                 Character cartoonFighter = getBuffer().getCartoonFighter();
 
+                //Después de escoger los luchadores, colocarlos en el mainWindow
                 if (nickFighter != null && cartoonFighter != null) {
                     System.out.println(nickFighter.getName() + "vs" + cartoonFighter.getName());
                     getMainWindow().getFighterNick().setText(nickFighter.getName());
@@ -73,6 +74,7 @@ public class Processor extends Thread {
 
                     double prob = Math.random();
 
+                    //Decidir quién gana
                     if (prob <= 0.4) {
                         System.out.println("fight");
                         boolean result = chooseWinner(nickFighter, cartoonFighter);
