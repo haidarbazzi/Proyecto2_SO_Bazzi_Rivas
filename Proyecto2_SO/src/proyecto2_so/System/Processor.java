@@ -38,7 +38,7 @@ public class Processor extends Thread {
 
                 } catch (Exception e) {
                 }
-
+                getMainWindow().getStateAI().setText("Seleccionando");
                 getMainWindow().getFighterNick().setText("");
                 getMainWindow().getFighterCartoon().setText(" ");
                 getMainWindow().getNickCharacterCard().setIcon(null);
@@ -116,7 +116,7 @@ public class Processor extends Thread {
                       
 
                     }
-
+                     
                     sleep((long)getBuffer().getNextSim());
 
                 }

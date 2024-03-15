@@ -46,7 +46,9 @@ public class Queue {
                 auxQ.queue(pAux);
                 
             }else {
+               
                 pAux.setCycle(pAux.getCycle() + 1);
+               
                 queue(pAux);
 
             } }
@@ -57,14 +59,13 @@ public class Queue {
 
     //Encola los nodos que deben cambiar de cola (completaron un ciclo)
     public void queueFullCycleNodes(Queue cycleQueue, TierEnum newTier) {
-        System.out.println(cycleQueue.getSize());
-        System.out.println(cycleQueue.isEmpty());
         
         if(!cycleQueue.isEmpty()){
         Nodo pAux=cycleQueue.dequeue();
             
             
             while(pAux !=null){
+                
             
             pAux.getCharacter().setTier(newTier);
             queue(pAux);
@@ -108,9 +109,6 @@ public class Queue {
 
     public Nodo dequeue() {
         Nodo ret = null;
-        if(getSize()==1){
-            empty();
-        }
         if (!isEmpty()) {
             ret = getFront();
 
