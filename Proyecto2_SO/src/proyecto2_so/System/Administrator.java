@@ -90,7 +90,6 @@ public class Administrator extends Thread {
  
             if (!buffer.getNickTier1Queue().isEmpty()) {
                
-
                 nickFighter = getBuffer().getNickTier1Queue().dequeueCharacter();
 
             } else if (!buffer.getNickTier2Queue().isEmpty()) {
