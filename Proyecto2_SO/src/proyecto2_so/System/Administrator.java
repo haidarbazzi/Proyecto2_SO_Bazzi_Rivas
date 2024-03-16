@@ -62,12 +62,7 @@ public class Administrator extends Thread {
             if(getBuffer().getNickFighter()!=null && getBuffer().getCartoonFighter()!=null){
                movetoQueue(getBuffer().getCartoonFighter());
                movetoQueue(getBuffer().getNickFighter());
-               System.out.println(getBuffer().getCartoonFighter().getName() + " ACA ESTA");
                
-               System.out.println("NICK 1");
-               if(!getBuffer().getNickTier1Queue().isEmpty()){
-                   getBuffer().getNickTier1Queue().print();
-               }
             }
              updateWindow();
 
@@ -81,7 +76,7 @@ public class Administrator extends Thread {
             Queue fullCycleQueueCart2 = getBuffer().getCartoonTier2Queue().dequeueFullCycle();
             getBuffer().getCartoonTier1Queue().queueFullCycleNodes(fullCycleQueueCart2, TierEnum.FIRST);
 
-            Queue fullCycleQueueCart3 = getBuffer().getCartoonTier2Queue().dequeueFullCycle();
+            Queue fullCycleQueueCart3 = getBuffer().getCartoonTier3Queue().dequeueFullCycle();
             getBuffer().getCartoonTier2Queue().queueFullCycleNodes(fullCycleQueueCart3, TierEnum.SECOND);
 
             //Seleccionar los personajes a batallar
