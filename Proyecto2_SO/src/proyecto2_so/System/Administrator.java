@@ -137,6 +137,7 @@ public class Administrator extends Thread {
             updateWindow();
             getBuffer().setNickFighter(nickFighter);
             getBuffer().setCartoonFighter(cartoonFighter);
+            
             getBuffer().setNumCycle(getBuffer().getNumCycle() + 1);
             
         }
@@ -170,11 +171,11 @@ public class Administrator extends Thread {
         int random = (int) Math.round(Math.random() * 19);
         Character nickC;
         Character cartoonC;
-        System.out.println("DENTRO DE CREATE NEW CHARACTER");
+        System.out.println("DENTRO DE CREATE NEW CHARACTER  random:   " + random);
         try {
             nickC = new Character(getBuffer().getNickCharacters()[random]);
-            cartoonC = new Character(getBuffer().getCartoonCharacters()[random]);
-
+            cartoonC = new Character(getBuffer().getCartoonCharacters()[random]);     
+            System.out.println(nickC.getTier() + "  TIERRR NICKKK");
             nickC.setId(getNextID());
             movetoQueue(nickC);
             cartoonC.setId(getNextID() + 1);

@@ -10,11 +10,11 @@ package proyecto2_so.Enum;
  */
 public enum TypeEnum {
     
-    MASTER(0),
-    SKILLED(1),
+    MASTER(4),
+    SKILLED(3),
     AVERAGE(2),
-    DEFICIENT(3),
-    WEAK(4);
+    DEFICIENT(1),
+    WEAK(0);
     
      private final int id;
     

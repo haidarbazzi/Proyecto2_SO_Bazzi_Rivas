@@ -45,13 +45,15 @@ public class Processor extends Thread {
                 getMainWindow().getCartoonCharacterCard().setIcon(null);
                 getMainWindow().getNickCharacterImage1().setIcon(null);
                 getMainWindow().getCartoonCharacterImage().setIcon(null);
-
-                
+                getMainWindow().getIDNickChar().setText("None");
+                getMainWindow().getIDcartoonChar().setText("None");
                 sleep((long)getBuffer().getSimLoad());
                 System.out.println(getBuffer().getSimLoad());
 
                 Character nickFighter = getBuffer().getNickFighter();
                 Character cartoonFighter = getBuffer().getCartoonFighter();
+                getMainWindow().getIDNickChar().setText(Integer.toString(getBuffer().getNickFighter().getId()));
+                getMainWindow().getIDcartoonChar().setText(Integer.toString(getBuffer().getCartoonFighter().getId()));
 
                 //Después de escoger los luchadores, colocarlos en el mainWindow
                 if (nickFighter != null && cartoonFighter != null) {
