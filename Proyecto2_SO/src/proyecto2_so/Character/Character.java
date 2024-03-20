@@ -12,7 +12,7 @@ import proyecto2_so.Enum.TypeEnum;
  *
  * @author andre
  */
-public class Character {
+public class Character{
     
     private String name;
     private int id;
@@ -27,6 +27,17 @@ public class Character {
         this.company = company;
         this.imgPath= imgPath;
         //define su tipo 
+        this.tierTypeAlg();
+    }
+    
+    public Character(Character clone){
+        this.company = clone.getCompany();
+        this.name = clone.getName();
+        this.tierTypeAlg();
+        this.imgPath = clone.getImgPath();
+    }
+    
+    public void tierTypeAlg(){
         boolean[] type = new boolean[4];
         double[] base = {0.7,0.6,0.5,0.4};
         double prob;
@@ -66,15 +77,6 @@ public class Character {
                 break;
         }
     }
-    
-    public Character(Character clone){
-        this.company = clone.getCompany();
-        this.name = clone.getName();
-        this.tier = clone.getTier();
-        this.type = clone.getType();
-        this.imgPath = clone.getImgPath();
-    }
-
     /**
      * @return the name
      */
