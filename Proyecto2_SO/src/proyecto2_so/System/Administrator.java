@@ -156,6 +156,7 @@ public class Administrator extends Thread {
     }
 
     public void updateQueues(javax.swing.JList<String> list, Queue queue) {
+        
         DefaultListModel model = new DefaultListModel();
         list.setModel(model);
         String[] elements = queue.toArray();
@@ -171,18 +172,16 @@ public class Administrator extends Thread {
         int random = (int) Math.round(Math.random() * 19);
         Character nickC;
         Character cartoonC;
-        System.out.println("DENTRO DE CREATE NEW CHARACTER  random:   " + random);
         try {
             nickC = new Character(getBuffer().getNickCharacters()[random]);
             cartoonC = new Character(getBuffer().getCartoonCharacters()[random]);     
-            System.out.println(nickC.getTier() + "  TIERRR NICKKK");
             nickC.setId(getNextID());
             movetoQueue(nickC);
             cartoonC.setId(getNextID() + 1);
             movetoQueue(cartoonC);
             setNextID(getNextID() + 2);
         } catch (Exception e) {
-            System.out.println(e);
+            
         }
 
     }
